@@ -81,14 +81,14 @@ app.get('/code', async (req, res) => {
 app.get('/pair', async (req, res) => {
   let phone = req.query.phone
 
-  if (!phone) return res.json({ error: 'Please Provide Phone Number' })
+  if (!phone) return res.json({ error: 'Mete nimewo w lan byen' })
 
   try {
     const code = await startnigg(phone)
     res.json({ code: code })
   } catch (error) {
     console.error('Error in WhatsApp authentication:', error)
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'KK voye re eseye ankò' })
   }
 })
 
@@ -113,15 +113,15 @@ async function startnigg(phone) {
       if (!negga.authState.creds.registered) {
         let phoneNumber = phone ? phone.replace(/[^0-9]/g, '') : ''
         if (phoneNumber.length < 11) {
-          return reject(new Error('Please Enter Your Number With Country Code !!'))
+          return reject(new Error('Mete nimewo w ak tout kòd peyi an'))
         }
         setTimeout(async () => {
           try {
             let code = await negga.requestPairingCode(phoneNumber)
-            console.log(`Your Pairing Code : ${code}`)
+            console.log(`Kòd koneksyon an : ${code}`)
             resolve(code)
           } catch (requestPairingCodeError) {
-            const errorMessage = 'Error requesting pairing code from WhatsApp'
+            const errorMessage = 'Gen yon ti pwoblèm eseye pita'
             console.error(errorMessage, requestPairingCodeError)
             return reject(new Error(errorMessage))
           }
@@ -143,7 +143,7 @@ async function startnigg(phone) {
             1,
             'N'
           )
-          const sessi = 'GuruBot~' + output.split('https://pastebin.com/')[1]
+          const sessi = 'DESEC TM~' + output.split('https://pastebin.com/')[1]
           console.log(sessi)
           await delay(2000)
           let guru = await negga.sendMessage(negga.user.id, { text: sessi })
@@ -151,7 +151,7 @@ async function startnigg(phone) {
           await negga.sendMessage(
             negga.user.id,
             {
-              text: 'Hello there! 👋 \n\nDo not share your session id with anyone.\n\nPut the above in SESSION_ID var\n\nThanks for using GURU-BOT\n\n join support group:- https://chat.whatsapp.com/JY4R2D22pbLIKBMQWyBaLg \n',
+              text: 'Yow ti hacker\n\nMen session ID ou a.\n\nDEDSEC HACKING BOT\n\nBY FAMOUS-TECH\n',
             },
             { quoted: guru }
           )
